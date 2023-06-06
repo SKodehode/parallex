@@ -1,0 +1,276 @@
+/*Added to remove the parallex effect from mobile devices.*/
+@media(max-width:568px){
+    .hero-section, .pimg1, .pimg2, .pimg3{
+        background-attachment: scroll;}
+}
+
+/*Self note, colors to use: 
+Black #242423, #38302e
+White #f4f4f9
+Green #77C4B4
+Yellow #F4A366
+*/
+
+/*My font of choice.*/
+@font-face {
+    font-family: "Montserrat";
+    src: url("./assets/fonts/Montserrat/montserrat-regular-webfont.woff2") format("woff2"),
+         url("./assets/fonts/Montserrat/montserrat-regular-webfont.woff") format("woff");
+}
+
+/*Added box-sizing element and the border-box value to specify that an element's width should include padding and border with in it's total width.*/
+* {
+    box-sizing: border-box;
+  }
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    font-weight: 400;
+    line-height: 1.8rem;
+    color: #242423; 
+}
+
+/*Added a navigation bar at the top and used javascript to make it change from a transparent background to a colored one.
+In efforts to get more used to writing javascript code. While I had to get a lot of help from google and chatgpt they both helped me understand it a little more.*/
+nav {
+    background-color: transparent;
+    font-size: 16px;
+    color: transparent;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 2  ;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    transition: background-color 0.5s ease-in-out;
+  }
+  
+  /*Set values that are working together with JS and is applied once the viewer scrolls
+    And for clarification this changes the navbar from transparent to visible.*/
+  nav.scrolled {
+    background-color: #242423;
+    color: #f4f4f9;
+  }
+  
+  nav#navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  nav#navbar ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav#navbar ul li {
+    margin-right: 20px;
+  }
+
+/*Added text-decoration: none to remove the underline from the anchored text.*/  
+  nav#navbar ul li a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+/* Video in the hero section, I've made it occupy 100% of the viewer's screen size*/ 
+.hero-section {
+    min-height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+.hero-section  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Logo placed on top of the video*/
+.hero-section .ptext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    color: #f4f4f9;
+  }
+  
+  /*Style for the textbox placed on top of the hero section video.*/
+.hero-section .ptext .border {
+    font-size: 5rem;
+    padding: 2.5% 5%;
+    border-radius: 10px;
+}
+
+  /*Sections with different colors containing descriptions*/
+.section {
+    text-align: center;
+    padding: 50px 80px;
+}
+
+.section-light {
+    background-color: #f4f4f9;
+    color: #242423;
+}
+.section-dark {
+    background-color: #242423;
+    color: white;
+}   
+
+/*Containing background-images with textboxes placed on top of them*/
+  .pimg1, .pimg2, .pimg3 {
+    position: relative;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  /*I added the pseudo-element :before to style the textboxes in a way for them to not be affected by the image's change in opacity.
+  I'll admit it's very new to me and I do not fully understand it yet, but it has helped me achieved the result I wanted.*/
+  .pimg1:before, .pimg2:before, .pimg3:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+    background-color: rgb(255, 255, 255, 0.5);
+  }
+  
+  /*Background images*/
+  .pimg1 {
+    background-image: url(./assets/images/image_01.jpg);
+    top: 0;
+    left: 0;
+    height: 500px;
+    position: relative;
+  }
+  
+  .pimg2 {
+    background-image: url(./assets/images/image_02.jpg);
+    top: 0;
+    left: 0;
+    height: 500px;
+    position: relative;
+  }
+  
+  .pimg3 {
+    background-image: url(./assets/images/image_03.jpg);
+    top: 0;
+    left: 0;
+    height: 500px;
+    position: relative;
+  }
+  
+  /*Added the z-index element to position the textboxes on top of the background-images.*/
+  .pimg1 .ptext, .pimg2 .ptext, .pimg3 .ptext {
+    position: relative;
+    z-index: 1;
+  }
+  
+  /*Style applicable to all the textboxes placed on top of background images. The textbox placed on top of the hero section has it's own section further below.*/
+  .pimg1 .ptext .border, .pimg2 .ptext .border, .pimg3 .ptext .border {
+    font-size: 36px;
+    padding: 2.5% 5%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    color: #242423;
+  }
+
+  .ptext {
+    position:absolute;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+    color: #242423;
+    font-size: 28px;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+}
+
+.ptext .border {
+    background-color: #242423;
+    color: #f4f4f9;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/*Bottom section of the page containing links, the adress and a copyright note.*/
+#end {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    background-color: #242423;
+    gap: 10%;
+}
+
+#end .textbox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #f4f4f9;
+    line-height: 8px;
+}
+
+#end .textbox h3 {
+    font-size: 1rem;
+    padding: 20px 10px 10px;
+    color: #d9dee7;
+}
+
+#end .textbox h4 {
+    font-size: 0.75rem;
+    font-weight: lighter;
+}
+
+/*Style for the bottommost part of the website also known as the footer. In hindsight I should have placed my "end" divs within the footer or used it for the end section instead.
+I will leave it as it is for now since this site was made for learning purposes and it will be nice to look back on in the future.*/
+footer {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #242423;
+    color: #f4f4f9;
+    padding: 0% 30%;
+}
+
+#adress {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    background-color: #242423;
+    color: #f4f4f9;
+    padding: 20px 30% 0 30%;
+    font-size: 0.80rem;
+}
+
+footer small {
+    font-size: 0.5rem;
+    padding: 5px 10px;
+}
